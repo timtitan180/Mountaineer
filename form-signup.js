@@ -1,35 +1,33 @@
 var AllInputs = document.querySelectorAll("input");
-var PasswordsMatch = true;
-var EmptyInputMessage = "Please fill in all required fields";
-var PasswordsDontMatch = "Passwords do not match";
-var Passwords = document.classList("password");
-var isVerified = false;
+var getPassword = document.getElementById("first-password").value;
+var passwordVerify = document.getElementById("verify-password").value;
 
 
-var i = 0;
-for(i; i<AllInputs.length; i++) {
-  if (AllInputs[i].value == null) {
-    EmptyInputMessage.style.display = "inline-block";
-  }
-
-}
-
+jj
+function checkPasswordLength() {
 var required = 10;
-if (Passwords.length < required) {
-  PasswordsMatch = false;
-  var PasswordLenght = "Password is too short";
-  PasswordLength.style.display = "inline-block";
+if (Password.length < required) {
+  document.querySelector(".paragraphs").display = "block";
+  AllInputs.style.borderColor = "red";
+  document.getElementById("message").style.display = "inline-block";
+  var secondMessage = document.getElementById("second-message");
+  secondMessage.style.display = "inline-block";
 }
+};
 
-for(var j=0; j<Passwords[0].length; j++) {
-  for(var k=0; k<Passwords[1].length; k++) {
-    if Passwords[j] !==  Passwords[k] {
-      PasswordsDontMatch.style.display == "inline-block";
+isRegistered = false;
+function checkPasswords(event) {
+for(var i=0; i<Password.length; i++) {
+    if(input[i] == Verify) {
+      isRegistered = true;
     }
     else {
-      isVerified = true;
-      time.sleep(1);
-      document.write("Registering your account...");
+      document.querySelector(".paragraphs").display = "block";
+      var thirdMessage = document.getElementById("third-message");
+      thirdMessage.style.display = "inline-block";
     }
-  }
-}
+};
+
+document.getElementById("button").addEventListener("click",checkInputs);
+document.getElementById("button").addEventListener("click",checkPasswordLength);
+document.getElementById("button").addEventListener("click",checkPasswords);

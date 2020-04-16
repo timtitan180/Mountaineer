@@ -21,8 +21,7 @@
     </div>
   </nav>
     <div class="button-menu">
-      <!-- <form class="login"> -->
-        <div class="field">
+      <div class="field">
           <label for="First Name">First Name</label>
         <div class="control">
           <input class="input is-primary" type="text" placeholder="First Name">
@@ -40,22 +39,23 @@
         <div class="field">
           <label for="Password">Password</label>
         <div class="control">
-            <input class="input is-primary" id="password" name="password" type="text" placeholder="Password">
+            <input class="input is-primary password" id="first-password" name="password" type="text" placeholder="Password">
         </div>
         <div>
         <div class="field">
           <label for="Renter Password">Verify Password</label>
         <div class="control">
-          <input  class="input is-primary" type="text" placeholder="Verify Password">
+          <input class="input is-primary" type="text" id="verify-password" placeholder="Verify Password">
         </div>
         <div class="wrapper">
-          <button class="button is-info is-outlined" id="button" onclick="clickButton()">Submit</button>
+          <button class="button is-info is-outlined" id="button">Submit</button>
         </div>
+          <div class="paragraphs">
+            <p class="ms" id="message">Please input all fields</p>
+            <p class = "ms" id="second-message">Password must be at least 10 characters long</p>
+            <p class = "ms" id="third-message">Passwords dont match</p>
+          </div>
       <a href="file:///C:/Users/timtu/Desktop/Mountaineer/form.html">Login</a>
-    <div class="paragraphs">
-        <p class="ms" id="message">Password is too short!</p>
-        <p class = "ms" id="second-message">You are logged in!</p>
-    </div>
-      <script type="text/javascript" src="form.js"></script>
+      <script type="text/javascript" src="form-signup.js"></script>
   </body>
 </html>

@@ -103,6 +103,15 @@ body,html,.navbar {
   float: center;
 }
 
+.paragraphs {
+  position: relative;
+  display: none;
+  height: 90px;
+  width: 100%;
+  background-color: rgba(220,220,220,0.60);
+  background-size: cover;
+}
+
 #message {
   display: none;
   color: red;
@@ -110,5 +119,9 @@ body,html,.navbar {
 
 #second-message {
   display: none;
-  color: green;
+  color: red;
+}
+#third-message {
+  display: none;
+  color: red;
 }
