@@ -1,33 +1,38 @@
-var AllInputs = document.querySelectorAll("input");
-var getPassword = document.getElementById("first-password").value;
-var passwordVerify = document.getElementById("verify-password").value;
+var getName =  document.forms[0].elements[0].value;
+var getUsername = document.forms[0].elements[2].value;
+var password = document.forms[0].elements[3];
+var secondPasswordBox = document.forms[0].elements[4];
+var matchingPassword = document.forms["registerForm"].getElementsByTagName("verifyPassword");
 
-
-jj
-function checkPasswordLength() {
-var required = 10;
-if (Password.length < required) {
-  document.querySelector(".paragraphs").display = "block";
-  AllInputs.style.borderColor = "red";
-  document.getElementById("message").style.display = "inline-block";
-  var secondMessage = document.getElementById("second-message");
-  secondMessage.style.display = "inline-block";
-}
+function checkPasswordlength() {
+  var required = 10;
+  var passwordLength = password.value;
+  if(passwordLength.length < required) {
+    alert("Password must be at least 10 characters long");
+  }
+  else {
+    return true;
+  }
 };
 
-isRegistered = false;
-function checkPasswords(event) {
-for(var i=0; i<Password.length; i++) {
-    if(input[i] == Verify) {
-      isRegistered = true;
+
+function passwordsMatch() {
+  firstPassword = password.value;
+  secondPassword = secondPasswordBox.value;
+    if(firstPassword != secondPassword) {
+      alert("Passwords do not match");
+      return false;
     }
     else {
-      document.querySelector(".paragraphs").display = "block";
-      var thirdMessage = document.getElementById("third-message");
-      thirdMessage.style.display = "inline-block";
-    }
+    return true;
+  }
 };
 
-document.getElementById("button").addEventListener("click",checkInputs);
-document.getElementById("button").addEventListener("click",checkPasswordLength);
-document.getElementById("button").addEventListener("click",checkPasswords);
+//save username, password and name in database -> Name | Username | Password
+
+
+document.getElementById("button").addEventListener("click",checkPasswordlength);
+document.getElementById("button").addEventListener("click",passwordsMatch);
+module.export = getName;
+module.export = getUsername;
+module.export = firstPassword;
