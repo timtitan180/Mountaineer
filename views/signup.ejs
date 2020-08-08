@@ -1,0 +1,52 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/form-signup.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/0f66109f5d.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+ <body>
+     <div class="main">
+     <form action="/signup" method="POST">
+            <div><h1>MOUNTAINEER<span class="fas fa-mountain"></span></h1>
+            </div>
+        <div class="field">
+                <label for="Username" id="password-label">Name</label>
+            <div class="control">
+                <input class="input is-primary"name="name" type="text" placeholder="Name">
+            </div>
+        </div>
+        <div class="field">
+              <label for="Username">Username</label>
+            <div class="control">
+                <input class="input is-primary" type="text" name="username" placeholder="Username">
+            </div>
+        </div>
+        <div class="field">
+              <label for="Password" id="password-label">Password</label>
+            <div class="control">
+                <input class="input is-primary" name="password" type="text" placeholder="Password">
+              </div>
+        </div>
+        <div class="field">
+                <label for="Password" id="renter password-label">ReEnter Password</label>
+            <div class="control">
+                <input class="input is-primary" name="verifiedPassword" type="text" placeholder=" Verify Password">
+            </div>
+        </div>
+        <div class="field">
+                <label for="Password" id="email-label">Email</label>
+            <div class="control">
+                  <input class="input is-primary" name="email" type="text" placeholder="Email">
+            </div>
+        </div>
+            <div class="wrapper">
+          <button class="button is-info is-outlined" id="button" type="submit">Submit</button>
+            </div>
+        </form>
+        </div>
+        <a href="/login">Already logged in?</a>
+</body>
