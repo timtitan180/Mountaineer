@@ -1,13 +1,10 @@
 body,.navbar {
-  background: linear-gradient(to right, rgba(54, 9, 109, 0.55),rgba(55, 213, 214, 0.60)),url("views/iced.png");
+  background: linear-gradient(to right, rgba(54, 9, 109, 0.55),rgba(55, 213, 214, 0.60)),url("iced.png");
   width: 100%;
   height: 100%;
   -webkit-background-size: cover;
   background-size: cover;
 
-}
-div {
-  background-color: #263666;
 }
 
 .main {
@@ -16,7 +13,7 @@ div {
   text-align: center;
   background-color: rgba(220,220,220,0.60);
   background-size: cover;
-  height: 410px;
+  height: 480px;
   width: 260px;
   margin-left: 663px;
   margin-top: 200px;
@@ -47,20 +44,24 @@ div {
 
 }
 input[name=username] {
-  width: 70%;
-  margin-top: 121px;
+  width: 100%;
+  /* margin-top: 121px; */
 }
 
  input[name=password] {
   width: 100%;
 }
 
-#passsword-label {
+input[name="verifyPassword"] {
+    width:
+}
+
+/* #passsword-label {
     width: 70%;
     margin-top: 0px;
     margin-left: 4px;
 
-}
+} */
 #button {
   width: 30%;
 }

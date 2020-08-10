@@ -12,7 +12,6 @@ const flash = require('connect-flash');
 require('./config/passport')(passport);
 
 const myRoutes = require('./models/routes');
-// const { User, newUser } = require('./models/user');
 
 const database = "authenticationdb";
 
@@ -23,7 +22,6 @@ app.use(express.urlencoded({extended:false}));
 app.set('view engine','ejs');
 
 app.use(express.static(path.join(__dirname,'/public')));
-
 
 app.set('views',path.join(__dirname + '/views'));
 
@@ -39,13 +37,13 @@ app.use(function(request,response,next){
  app.use(flash());
 
 
-app.use(
-   session({
-    cookie: {maxAge:6000},
-   secret: 'secret',
-   resave: true,
-   saveUninitialized: true
-   }));
+ app.use(
+    session({
+     cookie: {maxAge:6000},
+    resave: true,
+    saveUninitialized: true,
+    secret: 'secret',
+}));
  
 passport.initialize();
 passport.session();

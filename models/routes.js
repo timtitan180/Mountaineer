@@ -77,6 +77,6 @@ router.post('/login',function(req,res,next){
         failureRedirect: '/login',
         failureFlash: true
     });
-});
+})(req,res.next);
 
 module.exports = router;
