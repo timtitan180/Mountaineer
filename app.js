@@ -15,7 +15,7 @@ require('./config/passport')(passport);
 
 const database = 'authenticationdb';
 
-const uri = `mongodb+srv://timtudosa18:Snake150!@first-cluster.fz0ml.mongodb.net/${database}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://timtudosa18:Snake150!@first-cluster.fz0ml.mongodb.net/${database}`;//connect MongoDB Atlas to application
 
 mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true}).then(console.log("MONGODB Connected")).catch(err=>console.log(err));
 
