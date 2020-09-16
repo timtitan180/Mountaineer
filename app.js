@@ -4,18 +4,20 @@ const mongoose = require('mongoose');
 const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 require('./config/passport');
-const flash = require('connect-flash');
-
-// var routes = require('./models/routes');
+const flash = require('express-flash');
+const User = require('./models/user');
+const myRoutes = require('./models/routes');
+const ejs = require('ejs');
 
 require('./config/passport')(passport);
 
-const myRoutes = require('./models/routes');
+const database = 'authenticationdb';
 
-const database = "authenticationdb";
+const uri = `mongodb+srv://timtudosa18:Snake150!@first-cluster.fz0ml.mongodb.net/${database}?retryWrites=true&w=majority`;
 
-mongoose.connect(`mongodb://localhost:27017/${database}`,{useNewUrlParser: true,useUnifiedTopology: true}).then(()=> console.log('MongoDB Connected')).catch(error=>console.log(error));
+mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true}).then(console.log("MONGODB Connected")).catch(err=>console.log(err));
 
 app.use(express.urlencoded({extended:false}));
 
@@ -25,21 +27,11 @@ app.use(express.static(path.join(__dirname,'/public')));
 
 app.set('views',path.join(__dirname + '/views'));
 
-app.use('/',myRoutes);
-
-app.use(function(request,response,next){
-     response.locals.success_msg = request.flash('success_msg');//messages that will render from views/messages.ejs
-     response.locals.error_msg = request.flash('error_msg');
-     response.locals.error = request.flash('error');
-     next()
- });
-
- app.use(flash());
-
+app.use(cookieParser('secret'));
 
  app.use(
     session({
-     cookie: {maxAge:6000},
+    cookie: {maxAge:6000},
     resave: true,
     saveUninitialized: true,
     secret: 'secret',
@@ -48,8 +40,11 @@ app.use(function(request,response,next){
 passport.initialize();
 passport.session();
 
+app.use(flash());
 
- const PORT = process.env.PORT || 6009;
+app.use('/',myRoutes);
+   
+const PORT = process.env.PORT || 6009;
 
 
-app.listen(PORT,()=> console.log(`App is running on port ${PORT}` ));
+app.listen(PORT,()=> console.log(`App is running on port ${PORT}`));
