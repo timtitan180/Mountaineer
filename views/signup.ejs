@@ -1,0 +1,57 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/form-signup.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/0f66109f5d.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+ <body>
+    <div>
+        <header class="head" style="background-color:rgba(224, 224, 228, 0.30);padding-top: 10px;border-bottom:1px solid rgba(255, 255, 255, 0.20);"><h1 style="color:rgba(0, 0, 255, 0.60);">MOUNTAINEER<span style="float: right;"><a href="/login">LOGIN</a></span></header>
+      </div>
+      <%-include ('partials/signup-header')%>
+     <div class="main">
+     <form action="/signup" method="POST">
+        <div class="field">
+            <label for="Name" id="password-label">Name</label>
+            <div class="control">
+            <input autocomplete="off" class="input is-primary" name="name" type="text" placeholder="Name">
+            </div>
+        </div>
+        <div class="field">
+            <label for="Username">Username</label>
+            <div class="control">
+            <input autocomplete="off" class="input is-primary" type="text" name="username" placeholder="Username">
+            </div>
+        </div>
+        <div class="field">
+              <label for="Password" id="password-label">Password</label>
+                <div class="control">
+                <input autocomplete="off" class="input is-primary" name="password" type="text" placeholder="Password">
+              </div>
+        </div>
+        <div class="field">
+                <label for="Password" id="renter password-label">ReEnter Password</label>
+                <div class="control">
+                <input autocomplete="off" class="input is-primary" name="verifiedPassword" type="text" placeholder=" Verify Password">
+            </div>
+        </div>
+        <div class="field">
+                <label for="Password" id="email-label">Email</label>
+                <div class="control">
+                  <input autocomplete="off" class="input is-primary" name="email" type="text" placeholder="Email">
+            </div>
+            </div>
+            <div class="wrapper">
+                <button style="width:30%"  class="button is-info is-outlined" id="button" type="submit">Submit</button>
+                 <a id="link" href="login">Login</a>
+            </div>
+        </form>
+    </div>
+        <div>
+        <footer><p>@Timothy Tudosa 2020</p></footer>
+        </div>
+</body>

@@ -1,0 +1,40 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Mountaineer</title>
+  <link rel="stylesheet" type="text/css" href="/form-signup.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+    <header class="head" style="background-color:rgba(224, 224, 228, 0.30);padding-top: 15px;border-bottom:1px solid rgba(255, 255, 255, 0.20);"><h1 style="color:rgba(0, 0, 255, 0.80);">MOUNTAINEER<span style="float:right"><a href="/signup">SIGNUP</a></span></h1></header>
+    </div>
+  </nav>
+    <%-include ('partials/login-header') %>
+    <div class="main" style="height: 440px; width:300px; margin-bottom: 40px;">
+      <form action="/login" method="POST">
+        <div class="field">
+          <label for="Username">Username</label>
+        <div class="control">
+        <input class="input is-primary" type="text" placeholder="Username" name="existingUsername" placeholder="Username">
+      </div>
+    </div>
+        <div class="field">
+          <label for="Password">Password</label>
+        <div class="control">
+            <input class="input is-primary" name="password" type="text" placeholder="Password">
+          </div>
+        </div>
+        <div class="wrapper">
+          <button style="width:30%" class="button is-info is-outlined" name="button" type="submit">Submit</button>
+          <a style="display:block" id="signup-link">Register</a>
+        </div>
+      </form>
+    </div>
+      <div>
+        <footer style="width:100%;text-align:center;bottom:20px"><p style="margin-bottom: 40px;">@Timothy Tudosa 2020</p></footer>
+    </div>
+</body>

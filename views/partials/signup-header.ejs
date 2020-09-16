@@ -1,0 +1,30 @@
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .signup-header {
+            height: 100px;
+            width: 310px;
+            margin: auto;
+            top: 150px;
+            right: 49px;
+            display: block;
+            position: relative;
+            text-align: center;
+            background-color: rgba(220,220,220,0.60);
+        }
+        #signup {
+            font-family: 'Roboto', sans-serif;
+            display: inline-block;
+            top:50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<div class="signup-header">
+    <h1 id="signup" >Register</h1>
+    <% if(messages.message) { %><h2 style="color:red"><%=messages.message%></h2><% } %>
+</div>
