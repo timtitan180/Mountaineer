@@ -1,82 +1,109 @@
+ const express = require('express');
+ const router = express.Router();
+ const passport = require('passport');
+ const mongoose = require('mongoose');
+ 
 
-const express = require('express');
-const User = require('./user');
-const passport = require('../config/passport');
-const router = express.Router();
-
-express.urlencoded({extended:false});
-
-router.get('/',function(req,res){
-    res.render('signup',{header: "Sign Up"});
-});
-
-router.get('/login',function(req,res){
-    res.render('login');
-});
-
-// router.post('/login',passport.authenticate('local'),function(req,res){
-//     res.render('dashboard');
-// });
-
-
-router.get('/signup',function(req,res){
-
-    res.render('signup',{header:"Validation"});
-});
-
-router.post('/signup',function(req,res){
-    var errors = []
-
-    const {name,username,email,password,verifiedPassword} = req.body;
-
-    if(!name || !username || !password || !verifiedPassword || !email) {
-        console.log(name,username,password,verifiedPassword,email);
-        errors.push({msg:"All fields are required"});
+ 
+    const userSchema = {
+    name: {
+      type: String,
+       required: true
+    },
+  
+    username: {
+      type: String,
+     required: true
+    },
+    email: {
+      type: String,
+     required: true
+    },
+    password: {
+      type: String,
+       required: true
     }
+  };
+  
+    const User = new mongoose.model('User',userSchema);
 
-    if(password != verifiedPassword) {
-        errors.push({msg: "Please make sure passwords match"});
-    }
+    express.urlencoded({extended:false});
+
+    router.get('/',function(req,res){
+        res.render('signup',req.flash('message', null));
+    });
+    router.get('/signup',function(req,res){
+        res.render('signup');
+    });
+  
+    router.post('/signup',function(req,res){
+  
+        const {name,username,email,password,verifiedPassword} = req.body;
+  
+      if(!name || !username || !password || !verifiedPassword || !email) {
+            req.flash('message',"Please enter all fields");
+            res.redirect('/signup');
+            console.log('message',"Please enter all fields");
+      }
+  
+      if(password != verifiedPassword) {
+          req.flash('message',"Please make sure passwords match");
+          res.redirect('/signup');
+          console.log("Passwords do not match");
     
-    // var emailPattern = "/^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/";
-
-    // if(!data.email.match(emailPattern)) {
-    //     errors.push("Please enter a real email");
-    // }
-
-    if(errors.length > 0) {
-        console.log("Validation failed");
-        res.render('signup',{errors});
-    }
-
-    User.findOne({username},function(err){
-        console.log(err);
-        console.log(username);
-    });
-    newUser = new User({name:name,
-        username:username,
-        password:password,
-        secondPassword:verifiedPassword,
-        email:email
-    });
-    newUser.save(function(err){
-      if(err){
-        console.log(err);
       }
+    
+      if(!email.includes("@") && !email.includes(".com")) {
+            req.flash('message',"Please enter a valid email");
+            res.redirect('/signup');
+            console.log("Email not valid");
+      }
+  
       else {
-        console.log("User has been saved");
-        console.log(newUser);
-        res.render('dashboard',{header:`Welcome ${newUser.name}`});
-      }
-    });
-});
+  
+         User.findOne({username:username}).then(user=> {
+            if(user){
+                req.flash('error',`Account already exists Click on Login if you are trying to login`);
+                res.render('signup'); 
+               res.redirect('/signup');
+            }
+        });
+        const newUser = new User({name:name,
+            username:username,
+            password:password,
+            secondPassword:verifiedPassword,
+            email:email
+         });
+        newUser.save().then(user=> { 
+            console.log("User has been saved");
+            console.log(user.name);
+            res.render('dashboard',{header:`Welcome ${user.name}`});
+            res.redirect('/dashboard');
+         }).catch(err=>console.log(err));
+        }
+        });
 
-router.post('/login',function(req,res,next){
-    passport.authenticate('local',{
-        successRedirect: '/dashboard',
-        failureRedirect: '/login',
-        failureFlash: true
-    });
-})(req,res.next);
+        router.get('/login',function(req,res){
+            res.render('login');
+        });
+  
+        router.post('/login',function(req,res) {
+            var existingUsername = req.body.existingUsername;
+        User.findOne({username:existingUsername},function(user,err){
+                if(!user) {
+                    console.log(`User does not exist ${err}`);
+                    req.flash('message',"User does not exist");
+                    res.redirect('/login');
+                }
+                else {
+                    console.log("Logging in...");
+                    res.redirect('/dashboard');
+                }
+            });        
+        });
+    
+        router.get('/dashboard',function(req,res){
+         res.render('dashboard',{header:"Welcome"});
+   });
 
-module.exports = router;
+   module.exports = router;
