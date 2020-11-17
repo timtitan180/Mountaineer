@@ -23,7 +23,7 @@
       type: String,
        required: true
     }
-  };
+  };//Format of the mongoose data
   
     const User = new mongoose.model('User',userSchema);
 
