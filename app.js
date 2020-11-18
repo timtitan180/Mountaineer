@@ -47,4 +47,10 @@ app.use('/',myRoutes);
 const PORT = process.env.PORT || 6009;
 
 
-app.listen(PORT,()=> console.log(`App is running on port ${PORT}`));
+app.listen(PORT,()=> 
+           try {
+           console.log(`App is running on port ${PORT}`);
+}
+catch(e) {
+console.log(e)
+});
