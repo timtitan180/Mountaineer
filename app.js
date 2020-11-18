@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 require('./config/passport');
 const flash = require('express-flash');
 const User = require('./models/user');
-const myRoutes = require('./models/routes');
+const myRoutes = require('./models/routes');//importing NodeJs routes (Signup,Login and Dashboard pages will render from these routes)
 const ejs = require('ejs');
 
 require('./config/passport')(passport);
