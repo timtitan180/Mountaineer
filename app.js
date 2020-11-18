@@ -7,7 +7,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 require('./config/passport');
 const flash = require('express-flash');
-const User = require('./models/user');
+const User = require('./models/user');//MongoDB name,username and password data;
 const myRoutes = require('./models/routes');//importing NodeJs routes (Signup,Login and Dashboard pages will render from these routes)
 const ejs = require('ejs');
 
